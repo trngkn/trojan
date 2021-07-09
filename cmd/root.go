@@ -44,7 +44,7 @@ exit:
 		fmt.Println()
 		fmt.Println(util.Cyan("欢迎使用trojan管理程序"))
 		fmt.Println()
-		menuList := []string{"trojan管理", "用户管理", "安装管理", "web管理", "查看配置", "生成json"}
+		menuList := []string{"Trojan Management", "User Management", "Installation management", "Web Management", "View configuration", "Generate json"}
 		switch util.LoopInput("请选择: ", menuList, false) {
 		case 1:
 			trojan.ControllMenu()
