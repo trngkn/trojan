@@ -83,30 +83,7 @@ removeTrojan() {
     colorEcho ${GREEN} "uninstall success!"
 }
 
-checkSys() {
-    #检查是否为Root
-    [ $(id -u) != "0" ] && { colorEcho ${RED} "Error: You must be root to run this script"; exit 1; }
 
-    ARCH=$(uname -m 2> /dev/null)
-    if [[ $ARCH != x86_64 && $ARCH != aarch64 ]];then
-        colorEcho $YELLOW "not support $ARCH machine".
-        exit 1
-    fi
-
-    if [[ `command -v apt-get` ]];then
-        PACKAGE_MANAGER='apt-get'
-    elif [[ `command -v dnf` ]];then
-        PACKAGE_MANAGER='dnf'
-    elif [[ `command -v yum` ]];then
-        PACKAGE_MANAGER='yum'
-    else
-        colorEcho $RED "Not support OS!"
-        exit 1
-    fi
-
-    # 缺失/usr/local/bin路径时自动添加
-    [[ -z `echo $PATH|grep /usr/local/bin` ]] && { echo 'export PATH=$PATH:/usr/local/bin' >> /etc/bashrc; source /etc/bashrc; }
-}
 
 #安装依赖
 installDependent(){
